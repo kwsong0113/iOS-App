@@ -10,6 +10,7 @@ import Foundation
 struct MemoryGame {
     var cards: Array<Card>
     
-    func choose(card: Card) {
+    func choose(card: Card){
+        //test
     }
 }
