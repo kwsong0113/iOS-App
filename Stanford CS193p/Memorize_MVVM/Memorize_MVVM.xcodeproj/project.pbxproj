@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B84F71AA274A372F004EEB5B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F71A9274A372F004EEB5B /* Theme.swift */; };
 		B85B2CA72747B3A4001921ED /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85B2CA62747B3A4001921ED /* EmojiMemoryGame.swift */; };
 		B8C4B35F27454A3A0019DF43 /* Memorize_MVVMApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C4B35E27454A3A0019DF43 /* Memorize_MVVMApp.swift */; };
 		B8C4B36127454A3A0019DF43 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C4B36027454A3A0019DF43 /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B84F71A9274A372F004EEB5B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		B85B2CA62747B3A4001921ED /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		B8C4B35B27454A3A0019DF43 /* Memorize_MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize_MVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C4B35E27454A3A0019DF43 /* Memorize_MVVMApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memorize_MVVMApp.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				B8C4B36C27454BBA0019DF43 /* MemoryGame.swift */,
+				B84F71A9274A372F004EEB5B /* Theme.swift */,
 				B85B2CA62747B3A4001921ED /* EmojiMemoryGame.swift */,
 				B8C4B35E27454A3A0019DF43 /* Memorize_MVVMApp.swift */,
 				B8C4B36027454A3A0019DF43 /* ContentView.swift */,
@@ -145,6 +148,7 @@
 			files = (
 				B8C4B36D27454BBA0019DF43 /* MemoryGame.swift in Sources */,
 				B8C4B36127454A3A0019DF43 /* ContentView.swift in Sources */,
+				B84F71AA274A372F004EEB5B /* Theme.swift in Sources */,
 				B8C4B35F27454A3A0019DF43 /* Memorize_MVVMApp.swift in Sources */,
 				B85B2CA72747B3A4001921ED /* EmojiMemoryGame.swift in Sources */,
 			);
