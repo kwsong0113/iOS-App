@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  EmojiMemoryGameView.swift
 //  Memorize_MVVM
 //
 //  Created by user206692 on 11/17/21.
@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @ObservedObject var viewModel: EmojiMemoryGame
+struct EmojiMemoryGameView: View {
+    @ObservedObject var game: EmojiMemoryGame
     
     var body: some View {
         VStack {
             ZStack {
                 HStack {
                     VStack {
-                        Text("\(viewModel.score)")
+                        Text("\(game.score)")
                         Text("Score").font(.footnote)
                     }
                     Spacer()
                     Button {
-                        viewModel.startNewGame()
+                        game.startNewGame()
                     } label: {
                         VStack {
                             Image(systemName: "play.circle")
@@ -29,30 +29,30 @@ struct ContentView: View {
                     }
                 }
                 .padding(.horizontal)
-            Text(viewModel.themeName)
+            Text(game.themeName)
             }
             .foregroundColor(.mint)
             .font(.largeTitle)
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 75))]) {
-                    ForEach(viewModel.cards) { card in
+                    ForEach(game.cards) { card in
                         CardView(card: card)
                             .aspectRatio(2/3, contentMode: .fit)
                             .onTapGesture {
-                                viewModel.choose(card)
+                                game.choose(card)
                             }
                     }
                 }
             }
         }
-        .foregroundColor(viewModel.color)
+        .foregroundColor(game.color)
         .padding(.horizontal)
     }
 }
                                                     
 
 struct CardView: View {
-    let card: MemoryGame<String>.Card
+    let card: EmojiMemoryGame.Card
     
     var body: some View {
         ZStack {
@@ -88,9 +88,9 @@ struct CardView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let game = EmojiMemoryGame()
-        ContentView(viewModel: game)
+        EmojiMemoryGameView(game: game)
             .preferredColorScheme(.dark)
-        ContentView(viewModel: game)
+        EmojiMemoryGameView(game: game)
             .preferredColorScheme(.light)
     }
 }
