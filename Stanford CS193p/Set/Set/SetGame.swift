@@ -49,7 +49,7 @@ struct SetGame {
         let color: ThreeState
         var isMatched = false
         var isDealt = false
-        var isSelected = true
+        var isSelected = false
     }
     
     enum ThreeState: Int {

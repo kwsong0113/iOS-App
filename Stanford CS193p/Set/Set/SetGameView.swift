@@ -11,7 +11,7 @@ struct SetGameView: View {
     @ObservedObject var viewModel: SetGameViewModel
     
     var body: some View {
-        AspectVGrid(itemCount: 12, items: viewModel.deck, aspectRatio: 2/3) { card in
+        AspectVGrid(itemCount: viewModel.numberOfCardsToShow, items: viewModel.deck, aspectRatio: 2/3) { card in
             if card.isDealt {
                 CardView(card: card)
             }
@@ -31,10 +31,11 @@ struct CardView: View {
                 shape.fill().foregroundColor(.white)
                 shape.strokeBorder(lineWidth: 3)
                 VStack {
-                    Text("\(card.number.rawValue)")
-                    Text("\(card.shape.rawValue)")
-                    Text("\(card.shading.rawValue)")
-                    Text("\(card.color.rawValue)")
+                    Diamond().padding(5)
+//                    Text("\(card.number.rawValue)")
+//                    Text("\(card.shape.rawValue)")
+//                    Text("\(card.shading.rawValue)")
+//                    Text("\(card.color.rawValue)")
                 }
                 .font(.footnote)
             }

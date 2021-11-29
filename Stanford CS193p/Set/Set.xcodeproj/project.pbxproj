@@ -13,6 +13,7 @@
 		B87008F22750F2FA00FBB83C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B87008F12750F2FA00FBB83C /* Preview Assets.xcassets */; };
 		B87008F92750F3FA00FBB83C /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87008F82750F3FA00FBB83C /* SetGame.swift */; };
 		B87008FB2750F42100FBB83C /* SetGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87008FA2750F42100FBB83C /* SetGameViewModel.swift */; };
+		B8DDD59627551E0F001BE7AE /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DDD59527551E0F001BE7AE /* Diamond.swift */; };
 		B8F025AF2753CBEB00E13152 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F025AE2753CBEB00E13152 /* AspectVGrid.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,7 @@
 		B87008F12750F2FA00FBB83C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B87008F82750F3FA00FBB83C /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
 		B87008FA2750F42100FBB83C /* SetGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameViewModel.swift; sourceTree = "<group>"; };
+		B8DDD59527551E0F001BE7AE /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 		B8F025AE2753CBEB00E13152 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,6 +59,7 @@
 		B87008E92750F2F800FBB83C /* Set */ = {
 			isa = PBXGroup;
 			children = (
+				B8DDD59527551E0F001BE7AE /* Diamond.swift */,
 				B8F025AE2753CBEB00E13152 /* AspectVGrid.swift */,
 				B87008FA2750F42100FBB83C /* SetGameViewModel.swift */,
 				B87008F82750F3FA00FBB83C /* SetGame.swift */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8DDD59627551E0F001BE7AE /* Diamond.swift in Sources */,
 				B87008ED2750F2F800FBB83C /* SetGameView.swift in Sources */,
 				B87008F92750F3FA00FBB83C /* SetGame.swift in Sources */,
 				B87008EB2750F2F800FBB83C /* SetApp.swift in Sources */,

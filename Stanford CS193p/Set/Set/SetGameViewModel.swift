@@ -16,6 +16,16 @@ class SetGameViewModel: ObservableObject {
         return model.deck
     }
     
+    var numberOfCardsToShow: Int {
+        var numberOfCards = 0
+        deck.forEach { card in
+            if card.isDealt {
+                numberOfCards += 1
+            }
+        }
+        return numberOfCards
+    }
+    
     private static func createSetGame() -> SetGame {
         SetGame(numberOfCards: 81)
     }
