@@ -7,14 +7,25 @@
 
 import SwiftUI
 
-struct SetGameViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class SetGameViewModel: ObservableObject {
+    typealias Card = SetGame.Card
+    
+    @Published private var model: SetGame
+    
+    var deck: Array<Card> {
+        return model.deck
     }
-}
-
-struct SetGameViewModel_Previews: PreviewProvider {
-    static var previews: some View {
-        SetGameViewModel()
+    
+    private static func createSetGame() -> SetGame {
+        SetGame(numberOfCards: 81)
+    }
+    
+    init() {
+        model = SetGameViewModel.createSetGame()
+        deal(numberOfCardsToDeal: 12)
+    }
+    
+    func deal(numberOfCardsToDeal: Int) {
+        model.deal(numberOfCardsToDeal: numberOfCardsToDeal)
     }
 }
