@@ -21,28 +21,6 @@ struct SetGameView: View {
     }
 }
 
-struct CardView: View {
-    let card: SetGameViewModel.Card
-    
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                let shape = RoundedRectangle(cornerRadius: 15)
-                shape.fill().foregroundColor(.white)
-                shape.strokeBorder(lineWidth: 3)
-                VStack {
-                    Diamond().padding(5)
-//                    Text("\(card.number.rawValue)")
-//                    Text("\(card.shape.rawValue)")
-//                    Text("\(card.shading.rawValue)")
-//                    Text("\(card.color.rawValue)")
-                }
-                .font(.footnote)
-            }
-        }
-    }
-}
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = SetGameViewModel()
