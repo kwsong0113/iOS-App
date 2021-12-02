@@ -14,6 +14,9 @@ struct SetGameView: View {
         AspectVGrid(itemCount: viewModel.numberOfCardsToShow, items: viewModel.deck, aspectRatio: 2/3) { card in
             if card.isDealt {
                 CardView(card: card)
+                    .onTapGesture {
+                        viewModel.choose(card)
+                    }
             }
             
         }

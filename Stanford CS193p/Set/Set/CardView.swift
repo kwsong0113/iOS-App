@@ -30,18 +30,11 @@ struct CardView: View {
                 shape.fill().foregroundColor(.white)
                 shape.strokeBorder(lineWidth: 3)
                 VStack (spacing: 0) {
-                    let paddingLength: CGFloat = geometry.size.height * 0.35 / CGFloat(cardNumber) - geometry.size.width * 0.15
-                    Spacer(minLength: geometry.size.height * 0.15)
                     ForEach(0..<cardNumber) { _ in
                         cardShape()
-                            .padding(.horizontal, geometry.size.width * 0.2)
-                            .padding(.vertical, paddingLength)
+                            .frame(width: geometry.size.width * 0.6, height: geometry.size.width * 0.3)
+                            .padding(.vertical, geometry.size.height * 0.03)
                     }
-                    Spacer(minLength: geometry.size.height * 0.15)
-//                    Text("\(card.number.rawValue)")
-//                    Text("\(card.shape.rawValue)")
-//                    Text("\(card.shading.rawValue)")
-//                    Text("\(card.color.rawValue)")
                 }
                 .font(.footnote)
                 .foregroundColor(cardColor)
