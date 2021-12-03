@@ -38,9 +38,12 @@ struct SetGame {
     
     mutating func choose(_ card: Card) {
         if selectedCards.count == 3 {
-            if selectedCards.first!.isMatched {
+            if selectedCardsMatched {
+                for index in 0..<3 {
+                    selectedCards[index].isMatched = true
+                }
                 deal(numberOfCardsToDeal: 3)
-                if selectedCards.contains(where: {$0.id == card.id}) {
+                if selectedCards.contains(where: { $0.id == card.id }) {
                     selectedCards = []
                 } else {
                     selectedCards = [card]
@@ -70,6 +73,7 @@ struct SetGame {
             for cardIndex in numberOfCardsDealt..<(numberOfCardsDealt + numberOfCardsToDeal) {
                 deck[cardIndex].isDealt = true
             }
+            numberOfCardsDealt += numberOfCardsToDeal
         }
     }
     

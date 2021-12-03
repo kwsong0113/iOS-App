@@ -10,6 +10,7 @@ import SwiftUI
 struct CardView: View {
     typealias Card = SetGameViewModel.Card
     let card: Card
+    @ObservedObject var viewModel: SetGameViewModel
     
     var cardNumber: Int {
         return card.number.rawValue
@@ -23,12 +24,16 @@ struct CardView: View {
         }
     }
     
+    var isSelected: Bool {
+        return viewModel.selectedCards.contains(where: { $0.id == card.id })
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 let shape = RoundedRectangle(cornerRadius: 15)
-                shape.fill().foregroundColor(.white)
-                shape.strokeBorder(lineWidth: 3)
+                shape.fill().foregroundColor(isSelected ? .yellow : .white)
+                shape.strokeBorder(lineWidth: 3).foregroundColor(isSelected && viewModel.selectedCards.count == 3 ? (viewModel.selectedCardsMatched ? .blue : .red) : .black)
                 VStack (spacing: 0) {
                     ForEach(0..<cardNumber) { _ in
                         cardShape()
