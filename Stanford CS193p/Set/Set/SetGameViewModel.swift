@@ -16,22 +16,16 @@ class SetGameViewModel: ObservableObject {
         return model.deck
     }
     
-    var selectedCards: Array<Card> {
-        return model.selectedCards
+    var selectedCardsIndex: Array<Int> {
+        return model.selectedCardsIndex
+    }
+    
+    var dealtCardsIndex: Array<Int> {
+        return model.dealtCardsIndex
     }
     
     var selectedCardsMatched: Bool {
         return model.selectedCardsMatched
-    }
-    
-    var numberOfCardsToShow: Int {
-        var numberOfCards = 0
-        deck.forEach { card in
-            if card.isDealt {
-                numberOfCards += 1
-            }
-        }
-        return numberOfCards
     }
     
     private static func createSetGame() -> SetGame {

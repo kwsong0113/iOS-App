@@ -10,15 +10,20 @@ import Foundation
 
 
 struct SetGame {
-    private(set) var deck: Array<Card>
-    private(set) var selectedCards: Array<Card>
-    private var numberOfCardsDealt = 0
+    private(set) var deck: Array<Card> = []
+    private(set) var selectedCardsIndex: Array<Int> = []
+    private(set) var dealtCardsIndex: Array<Int> = []
+    private var numberOfCardsDealt: Int = 0
     var selectedCardsMatched: Bool {
-        if selectedCards.count == 3 {
-            let numbers: Set<ThreeState> = [selectedCards[0].number, selectedCards[1].number, selectedCards[2].number]
-            let shapes: Set<ThreeState> = [selectedCards[0].shape, selectedCards[1].shape, selectedCards[2].shape]
-            let shadings: Set<ThreeState> = [selectedCards[0].shading, selectedCards[1].shading, selectedCards[2].shading]
-            let colors: Set<ThreeState> = [selectedCards[0].color, selectedCards[1].color, selectedCards[2].color]
+        if selectedCardsIndex.count == 3 {
+            let card0 = deck[selectedCardsIndex[0]]
+            let card1 = deck[selectedCardsIndex[1]]
+            let card2 = deck[selectedCardsIndex[2]]
+            
+            let numbers: Set<ThreeState> = [card0.number, card1.number, card2.number]
+            let shapes: Set<ThreeState> = [card0.shape, card1.shape, card2.shape]
+            let shadings: Set<ThreeState> = [card0.shading, card1.shading, card2.shading]
+            let colors: Set<ThreeState> = [card0.color, card1.color, card2.color]
             if numbers.count == 2 || shapes.count == 2 || shadings.count == 2 || colors.count == 2 {
                 return false
             }
@@ -28,8 +33,6 @@ struct SetGame {
     }
     
     init(numberOfCards: Int) {
-        deck = []
-        selectedCards = []
         for cardIndex in 0..<numberOfCards {
             deck.append(createCard(cardIndex))
         }
@@ -37,22 +40,25 @@ struct SetGame {
     }
     
     mutating func choose(_ card: Card) {
-        if selectedCards.count == 3 {
+        if selectedCardsIndex.count < 3 && selectedCardsIndex.contains(where: { deck[$0].id == card.id }) {
+            return
+        }
+        if selectedCardsIndex.count == 3 {
             if selectedCardsMatched {
-                for index in 0..<3 {
-                    selectedCards[index].isMatched = true
+                selectedCardsIndex.forEach {
+                    deck[$0].isMatched = true
                 }
                 deal(numberOfCardsToDeal: 3)
-                if selectedCards.contains(where: { $0.id == card.id }) {
-                    selectedCards = []
+                if selectedCardsIndex.contains(where: { deck[$0].id == card.id }) {
+                    selectedCardsIndex = []
                 } else {
-                    selectedCards = [card]
+                    selectedCardsIndex = [deck.firstIndex(where: { $0.id == card.id })!]
                 }
             } else {
-                selectedCards = [card]
+                selectedCardsIndex = [deck.firstIndex(where: { $0.id == card.id })!]
             }
         } else {
-            selectedCards.append(card)
+            selectedCardsIndex.append(deck.firstIndex(where: { $0.id == card.id })!)
         }
     }
     
@@ -70,8 +76,23 @@ struct SetGame {
     
     mutating func deal(numberOfCardsToDeal: Int) {
         if numberOfCardsDealt < deck.count {
-            for cardIndex in numberOfCardsDealt..<(numberOfCardsDealt + numberOfCardsToDeal) {
-                deck[cardIndex].isDealt = true
+            if selectedCardsMatched {
+                selectedCardsIndex.forEach {
+                    deck[$0].isMatched = true
+                }
+                for cardIndex in numberOfCardsDealt..<(numberOfCardsDealt + numberOfCardsToDeal) {
+                    deck[cardIndex].isDealt = true
+                    if cardIndex < (numberOfCardsDealt + 3) {
+                        dealtCardsIndex[dealtCardsIndex.firstIndex(of: selectedCardsIndex[cardIndex - numberOfCardsDealt])!] = cardIndex
+                    } else {
+                        dealtCardsIndex.append(cardIndex)
+                    }
+                }
+            } else {
+                for cardIndex in numberOfCardsDealt..<(numberOfCardsDealt + numberOfCardsToDeal) {
+                    deck[cardIndex].isDealt = true
+                    dealtCardsIndex.append(cardIndex)
+                }
             }
             numberOfCardsDealt += numberOfCardsToDeal
         }

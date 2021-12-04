@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct AspectVGrid<Item, ItemView>: View where ItemView: View, Item: Identifiable {
-    var itemCount: Int
+    var itemIndices: Array<Int>
     var items: [Item]
     var aspectRatio: CGFloat
     var content: (Item) -> ItemView
     
-    init(itemCount: Int, items: [Item], aspectRatio: CGFloat, @ViewBuilder content: @escaping (Item) -> ItemView) {
-        self.itemCount = itemCount
+    init(itemIndices: Array<Int>, items: [Item], aspectRatio: CGFloat, @ViewBuilder content: @escaping (Item) -> ItemView) {
+        self.itemIndices = itemIndices
         self.items = items
         self.aspectRatio = aspectRatio
         self.content = content
@@ -23,15 +23,23 @@ struct AspectVGrid<Item, ItemView>: View where ItemView: View, Item: Identifiabl
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                let width: CGFloat = widthThatFits(itemCount: itemCount, in: geometry.size, itemAspectRatio: aspectRatio)
+                let width: CGFloat = widthThatFits(itemCount: itemIndices.count, in: geometry.size, itemAspectRatio: aspectRatio)
                 LazyVGrid(columns: [adaptiveGridItem(width: width)], spacing: 0) {
-                    ForEach(items) { item in
-                        content(item).aspectRatio(aspectRatio, contentMode: .fit)
+                    ForEach(chosenItems()) {
+                        content($0).aspectRatio(aspectRatio, contentMode: .fit)
                     }
                 }
                 Spacer(minLength: 0)
             }
         }
+    }
+    
+    private func chosenItems() -> [Item] {
+        var chosenItems: [Item] = []
+        itemIndices.forEach {
+            chosenItems.append(items[$0])
+        }
+        return chosenItems
     }
 }
 

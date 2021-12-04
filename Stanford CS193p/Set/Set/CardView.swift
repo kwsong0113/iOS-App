@@ -25,7 +25,7 @@ struct CardView: View {
     }
     
     var isSelected: Bool {
-        return viewModel.selectedCards.contains(where: { $0.id == card.id })
+        return viewModel.selectedCardsIndex.contains(where: { viewModel.deck[$0].id == card.id })
     }
     
     var body: some View {
@@ -33,7 +33,7 @@ struct CardView: View {
             ZStack {
                 let shape = RoundedRectangle(cornerRadius: 15)
                 shape.fill().foregroundColor(isSelected ? .yellow : .white)
-                shape.strokeBorder(lineWidth: 3).foregroundColor(isSelected && viewModel.selectedCards.count == 3 ? (viewModel.selectedCardsMatched ? .blue : .red) : .black)
+                shape.strokeBorder(lineWidth: 3).foregroundColor(isSelected && viewModel.selectedCardsIndex.count == 3 ? (viewModel.selectedCardsMatched ? .blue : .red) : .black)
                 VStack (spacing: 0) {
                     ForEach(0..<cardNumber) { _ in
                         cardShape()
@@ -58,14 +58,14 @@ struct CardView: View {
     
     @ViewBuilder
     func cardShading<SomeShape>(shape: SomeShape) -> some View where SomeShape: Shape {
-        switch card.shape.rawValue {
+        switch card.shading.rawValue {
         case 1: shape.stroke(lineWidth: 2)
         case 2: ZStack {
             shape.fill().opacity(0.8)
             shape.stroke(lineWidth: 2)
             }
         default: ZStack {
-            shape.fill().opacity(0.1)
+            shape.fill().opacity(0.2)
             shape.stroke(lineWidth: 2)
             }
         }

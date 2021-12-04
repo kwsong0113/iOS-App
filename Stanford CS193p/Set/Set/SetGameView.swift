@@ -11,8 +11,8 @@ struct SetGameView: View {
     @ObservedObject var viewModel: SetGameViewModel
     
     var body: some View {
-        AspectVGrid(itemCount: viewModel.numberOfCardsToShow, items: viewModel.deck, aspectRatio: 2/3) { card in
-            if card.isDealt && !card.isMatched {
+        AspectVGrid(itemIndices: viewModel.dealtCardsIndex, items: viewModel.deck, aspectRatio: 2/3) { card in
+            if !card.isMatched {
                 CardView(card: card, viewModel: viewModel)
                     .padding(4)
                     .onTapGesture {
