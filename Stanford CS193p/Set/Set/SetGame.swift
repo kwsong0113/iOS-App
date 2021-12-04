@@ -13,7 +13,7 @@ struct SetGame {
     private(set) var deck: Array<Card> = []
     private(set) var selectedCardsIndex: Array<Int> = []
     private(set) var dealtCardsIndex: Array<Int> = []
-    private var numberOfCardsDealt: Int = 0
+    private(set) var numberOfCardsDealt: Int = 0
     var selectedCardsMatched: Bool {
         if selectedCardsIndex.count == 3 {
             let card0 = deck[selectedCardsIndex[0]]
@@ -40,6 +40,7 @@ struct SetGame {
     }
     
     mutating func choose(_ card: Card) {
+        print("\(card)")
         if selectedCardsIndex.count == 3 {
             if selectedCardsMatched {
                 selectedCardsIndex.forEach {
@@ -89,6 +90,7 @@ struct SetGame {
                         dealtCardsIndex.append(cardIndex)
                     }
                 }
+                selectedCardsIndex = []
             } else {
                 for cardIndex in numberOfCardsDealt..<(numberOfCardsDealt + numberOfCardsToDeal) {
                     deck[cardIndex].isDealt = true

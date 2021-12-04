@@ -31,7 +31,7 @@ struct CardView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                let shape = RoundedRectangle(cornerRadius: 15)
+                let shape = RoundedRectangle(cornerRadius: geometry.size.width * 0.2)
                 shape.fill().foregroundColor(isSelected ? .yellow : .white)
                 shape.strokeBorder(lineWidth: 3).foregroundColor(isSelected && viewModel.selectedCardsIndex.count == 3 ? (viewModel.selectedCardsMatched ? .blue : .red) : .black)
                 VStack (spacing: 0) {

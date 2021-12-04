@@ -24,6 +24,10 @@ class SetGameViewModel: ObservableObject {
         return model.dealtCardsIndex
     }
     
+    var numberOfCardsDealt: Int {
+        return model.numberOfCardsDealt
+    }
+    
     var selectedCardsMatched: Bool {
         return model.selectedCardsMatched
     }
@@ -43,5 +47,10 @@ class SetGameViewModel: ObservableObject {
     
     func deal(numberOfCardsToDeal: Int) {
         model.deal(numberOfCardsToDeal: numberOfCardsToDeal)
+    }
+    
+    func startNewGame() {
+        model = SetGameViewModel.createSetGame()
+        deal(numberOfCardsToDeal: 12)
     }
 }
