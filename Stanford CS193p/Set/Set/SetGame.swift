@@ -40,9 +40,6 @@ struct SetGame {
     }
     
     mutating func choose(_ card: Card) {
-        if selectedCardsIndex.count < 3 && selectedCardsIndex.contains(where: { deck[$0].id == card.id }) {
-            return
-        }
         if selectedCardsIndex.count == 3 {
             if selectedCardsMatched {
                 selectedCardsIndex.forEach {
@@ -58,7 +55,11 @@ struct SetGame {
                 selectedCardsIndex = [deck.firstIndex(where: { $0.id == card.id })!]
             }
         } else {
-            selectedCardsIndex.append(deck.firstIndex(where: { $0.id == card.id })!)
+            if let index = selectedCardsIndex.first(where: { deck[$0].id == card.id }) {
+                selectedCardsIndex.removeAll(where: { $0 == index })
+            } else {
+                selectedCardsIndex.append(deck.firstIndex(where: { $0.id == card.id })!)
+            }
         }
     }
     
