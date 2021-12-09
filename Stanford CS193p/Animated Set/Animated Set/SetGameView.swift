@@ -13,22 +13,22 @@ struct SetGameView: View {
     @Namespace private var cardNamespace
     
     var body: some View {
-        ZStack(alignment: .bottom) {
+        VStack {
             VStack {
                 HStack {
                     newGame
                     Spacer()
                 }
-                .padding(.horizontal)
                 gameBody
             }
+            Spacer()
             HStack {
                 deckBody
                 Spacer()
                 discardedBody
             }
-            .padding(.horizontal, 30)
         }
+        .padding()
     }
     
     var gameBody: some View {
@@ -37,7 +37,7 @@ struct SetGameView: View {
                 .matchedGeometryEffect(id: card.id, in: cardNamespace)
                 .padding(4)
                 .onTapGesture {
-                    withAnimation(.linear(duration: 3)) {
+                    withAnimation(.linear(duration: 1)) {
                         viewModel.choose(card)
                     }
                 }
