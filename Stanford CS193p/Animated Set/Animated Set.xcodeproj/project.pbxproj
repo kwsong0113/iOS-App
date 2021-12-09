@@ -15,6 +15,7 @@
 		B88530B0275F74200047C45D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88530AF275F74200047C45D /* Assets.xcassets */; };
 		B88530B3275F74200047C45D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88530B2275F74200047C45D /* Preview Assets.xcassets */; };
 		B88530BA275F772B0047C45D /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88530B9275F772B0047C45D /* SetGame.swift */; };
+		B895E25527623BD100A6F3CD /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895E25427623BD100A6F3CD /* Diamond.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		B88530AF275F74200047C45D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B88530B2275F74200047C45D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B88530B9275F772B0047C45D /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
+		B895E25427623BD100A6F3CD /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 		B88530AA275F741F0047C45D /* Animated Set */ = {
 			isa = PBXGroup;
 			children = (
+				B895E25427623BD100A6F3CD /* Diamond.swift */,
 				B80A9DD4275FA8BB00145FCC /* CardView.swift */,
 				B80A9DD2275FA63000145FCC /* AspectVGrid.swift */,
 				B80A9DD0275F9EF200145FCC /* SetGameViewModel.swift */,
@@ -152,6 +155,7 @@
 				B88530AE275F741F0047C45D /* SetGameView.swift in Sources */,
 				B88530BA275F772B0047C45D /* SetGame.swift in Sources */,
 				B88530AC275F741F0047C45D /* Animated_SetApp.swift in Sources */,
+				B895E25527623BD100A6F3CD /* Diamond.swift in Sources */,
 				B80A9DD3275FA63000145FCC /* AspectVGrid.swift in Sources */,
 				B80A9DD5275FA8BB00145FCC /* CardView.swift in Sources */,
 				B80A9DD1275F9EF200145FCC /* SetGameViewModel.swift in Sources */,

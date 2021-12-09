@@ -14,7 +14,7 @@ struct SetGame {
     private var chosenCards: Array<Card> {
         return cards.filter({ $0.isSelected })
     }
-    var state: selectionState {
+    var state: SelectionState {
         var numbers: Set<ThreeState> = []
         var shapes: Set<ThreeState> = []
         var shadings: Set<ThreeState> = []
@@ -70,7 +70,14 @@ struct SetGame {
     }
     
     mutating func deal() {
-        cards.append(deck.removeFirst())
+        cards.append(deck.removeLast())
+    }
+    
+    mutating func dealAndDiscard() {
+        discardedCards.append(chosenCards.last!)
+        let index: Int = cards.firstIndex(where: { $0.id == chosenCards.last!.id })!
+        cards.remove(at: index)
+        cards.insert(deck.removeLast(), at: index)
     }
     
     struct Card: Identifiable {
@@ -90,7 +97,7 @@ struct SetGame {
     }
 }
 
-enum selectionState {
+enum SelectionState {
     case matched
     case mismatched
     case lessThanThreeCards

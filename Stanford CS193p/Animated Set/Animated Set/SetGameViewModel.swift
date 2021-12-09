@@ -23,6 +23,10 @@ class SetGameViewModel: ObservableObject {
         return model.discardedCards
     }
     
+    var state: SelectionState {
+        return model.state
+    }
+    
     private static func createSetGame() -> SetGame {
         SetGame(numberOfCards: 81)
     }
@@ -35,6 +39,10 @@ class SetGameViewModel: ObservableObject {
     
     func deal() {
         model.deal()
+    }
+    
+    func dealAndDiscard() {
+        model.dealAndDiscard()
     }
     
     func startNewGame() {
