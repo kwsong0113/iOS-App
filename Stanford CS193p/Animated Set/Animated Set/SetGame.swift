@@ -67,9 +67,11 @@ struct SetGame {
         case .lessThanThreeCards:
             cards[index].isSelected.toggle()
         }
+        print("\(card)")
     }
     
     mutating func deal() {
+        if deck.isEmpty { return }
         cards.append(deck.removeLast())
     }
     

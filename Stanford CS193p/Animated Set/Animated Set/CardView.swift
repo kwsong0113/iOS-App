@@ -39,7 +39,7 @@ struct CardView: View {
                 shape.fill().foregroundColor(card.isSelected ? .yellow : .white)
                 shape.strokeBorder(lineWidth: 3).foregroundColor(borderColor)
                 VStack (spacing: 0) {
-                    ForEach(0..<cardNumber) { _ in
+                    ForEach(0..<cardNumber, id: \.self) { _ in
                         cardShape()
                             .frame(width: geometry.size.width * 0.6, height: geometry.size.width * 0.3)
                             .padding(.vertical, geometry.size.height * 0.03)
