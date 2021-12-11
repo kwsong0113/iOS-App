@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6FB52842764ADB600CF09BC /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FB52832764ADB600CF09BC /* Cardify.swift */; };
 		B80A9DD1275F9EF200145FCC /* SetGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80A9DD0275F9EF200145FCC /* SetGameViewModel.swift */; };
 		B80A9DD3275FA63000145FCC /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80A9DD2275FA63000145FCC /* AspectVGrid.swift */; };
 		B80A9DD5275FA8BB00145FCC /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80A9DD4275FA8BB00145FCC /* CardView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B6FB52832764ADB600CF09BC /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 		B80A9DD0275F9EF200145FCC /* SetGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameViewModel.swift; sourceTree = "<group>"; };
 		B80A9DD2275FA63000145FCC /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		B80A9DD4275FA8BB00145FCC /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 		B88530AA275F741F0047C45D /* Animated Set */ = {
 			isa = PBXGroup;
 			children = (
+				B6FB52832764ADB600CF09BC /* Cardify.swift */,
 				B895E25427623BD100A6F3CD /* Diamond.swift */,
 				B80A9DD4275FA8BB00145FCC /* CardView.swift */,
 				B80A9DD2275FA63000145FCC /* AspectVGrid.swift */,
@@ -154,6 +157,7 @@
 			files = (
 				B88530AE275F741F0047C45D /* SetGameView.swift in Sources */,
 				B88530BA275F772B0047C45D /* SetGame.swift in Sources */,
+				B6FB52842764ADB600CF09BC /* Cardify.swift in Sources */,
 				B88530AC275F741F0047C45D /* Animated_SetApp.swift in Sources */,
 				B895E25527623BD100A6F3CD /* Diamond.swift in Sources */,
 				B80A9DD3275FA63000145FCC /* AspectVGrid.swift in Sources */,

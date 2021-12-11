@@ -31,11 +31,24 @@ struct SetGameView: View {
         .padding()
     }
     
+    private func flipCardAnimation(_ index: Int) -> Animation {
+        var delay = 0.0
+        delay = Double(index) * CardConstants.dealDelay + CardConstants.dealDuration
+        return Animation.easeInOut(duration: CardConstants.flipCardDuration).delay(delay)
+    }
+    
+    private func dealAnimation(_ index: Int) -> Animation {
+        var delay = 0.0
+        delay = Double(index) * CardConstants.dealDelay
+        return Animation.easeInOut(duration: CardConstants.dealDuration).delay(delay)
+    }
+    
     var gameBody: some View {
         AspectVGrid(items: viewModel.cards, aspectRatio: 2 / 3) { card in
             CardView(card: card, viewModel: viewModel)
                 .matchedGeometryEffect(id: card.id, in: cardNamespace)
                 .padding(4)
+                .zIndex(162.0 - Double(viewModel.cards.firstIndex(where: { $0.id == card.id })!))
                 .onTapGesture {
                     withAnimation(.linear(duration: 1)) {
                         viewModel.choose(card)
@@ -50,6 +63,7 @@ struct SetGameView: View {
             ForEach(viewModel.deck) { card in
                 CardView(card: card, viewModel: viewModel)
                     .matchedGeometryEffect(id: card.id, in: cardNamespace)
+                    .zIndex(Double(viewModel.deck.firstIndex(where: { $0.id == card.id })!))
             }
         }
         .frame(width: 60, height: 90)
@@ -64,9 +78,14 @@ struct SetGameView: View {
                 }
                 numberOfCardsToDeal -= 3
             }
-            for _ in 0..<numberOfCardsToDeal {
-                withAnimation(.linear(duration: 3)) {
-                    viewModel.deal()
+            for index in 0..<numberOfCardsToDeal {
+                if !viewModel.deck.isEmpty {
+                    withAnimation(dealAnimation(index)) {
+                        viewModel.deal()
+                    }
+                    withAnimation(flipCardAnimation(index)) {
+                        viewModel.flipCard()
+                    }
                 }
             }
         }
@@ -89,6 +108,12 @@ struct SetGameView: View {
                 viewModel.startNewGame()
             }
         }
+    }
+
+    private struct CardConstants {
+        static let dealDelay = 0.1
+        static let dealDuration = 0.8
+        static let flipCardDuration = 0.8
     }
 }
 

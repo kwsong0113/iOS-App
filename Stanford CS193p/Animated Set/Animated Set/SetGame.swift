@@ -31,6 +31,8 @@ struct SetGame {
         return .lessThanThreeCards
     }
     
+    var lastDealtCard: Card? = nil
+    
     init(numberOfCards: Int) {
         for cardIndex in 0..<numberOfCards {
             deck.append(createCard(cardIndex))
@@ -71,8 +73,12 @@ struct SetGame {
     }
     
     mutating func deal() {
-        if deck.isEmpty { return }
-        cards.append(deck.removeLast())
+        lastDealtCard = deck.removeLast()
+        cards.append(lastDealtCard!)
+    }
+    
+    mutating func flipCard() {
+        cards[cards.firstIndex(where: { $0.id == lastDealtCard!.id })!].isFaceUp = true
     }
     
     mutating func dealAndDiscard() {
@@ -88,6 +94,7 @@ struct SetGame {
         let shape: ThreeState
         let shading: ThreeState
         let color: ThreeState
+        var isFaceUp: Bool = false
         var isSelected: Bool = false
         var isMatched: Bool = false
     }

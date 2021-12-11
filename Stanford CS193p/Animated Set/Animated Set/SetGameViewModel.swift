@@ -41,6 +41,10 @@ class SetGameViewModel: ObservableObject {
         model.deal()
     }
     
+    func flipCard() {
+        model.flipCard()
+    }
+    
     func dealAndDiscard() {
         model.dealAndDiscard()
     }
