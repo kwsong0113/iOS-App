@@ -85,6 +85,7 @@ struct SetGame {
     mutating func discard() -> Int {
         discardedCards.append(chosenCards.last!)
         discardedCards[discardedCards.count - 1].isSelected = false
+        discardedCards[discardedCards.count - 1].isMatched = false
         let index: Int = cards.firstIndex(where: { $0.id == chosenCards.last!.id })!
         cards.remove(at: index)
         return index
