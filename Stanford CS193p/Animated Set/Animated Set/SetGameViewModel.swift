@@ -49,6 +49,10 @@ class SetGameViewModel: ObservableObject {
         model.dealAndDiscard()
     }
     
+    func discard() {
+        model.discard()
+    }
+    
     func startNewGame() {
         model = SetGameViewModel.createSetGame()
     }

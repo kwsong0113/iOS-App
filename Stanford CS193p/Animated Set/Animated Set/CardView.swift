@@ -43,7 +43,7 @@ struct CardView: View {
             }
             .font(.footnote)
             .foregroundColor(cardColor)
-            .cardify(isFaceUp: card.isFaceUp)
+            .cardify(isFaceUp: card.isFaceUp, isSelected: card.isSelected)
         }
     }
     

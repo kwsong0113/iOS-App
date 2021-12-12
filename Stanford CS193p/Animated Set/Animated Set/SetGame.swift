@@ -53,21 +53,16 @@ struct SetGame {
     }
     
     mutating func choose(_ card: Card){
-        let index: Int = cards.firstIndex(where: { $0.id == card.id })!
+        let index: Int? = cards.firstIndex(where: { $0.id == card.id })
         switch state {
-        case .matched:
-            for _ in 0..<3 {
-                discardedCards.append(chosenCards.last!)
-                cards.remove(at: cards.firstIndex(where: { $0.id == chosenCards.last!.id })!)
-            }
-            if let cardIndex = cards.firstIndex(where: { $0.id == card.id }) {
-                cards[cardIndex].isSelected = true
-            }
         case .mismatched:
             cards.indices.forEach { cards[$0].isSelected = false }
-            cards[index].isSelected = true
+            cards[index!].isSelected = true
         case .lessThanThreeCards:
-            cards[index].isSelected.toggle()
+            if let cardIndex = index {
+                cards[cardIndex].isSelected.toggle()
+            }
+        default: break
         }
         print("\(card)")
     }
@@ -82,10 +77,17 @@ struct SetGame {
     }
     
     mutating func dealAndDiscard() {
+        let index: Int = discard()
+        lastDealtCard = deck.removeLast()
+        cards.insert(lastDealtCard!, at: index)
+    }
+    
+    mutating func discard() -> Int {
         discardedCards.append(chosenCards.last!)
+        discardedCards[discardedCards.count - 1].isSelected = false
         let index: Int = cards.firstIndex(where: { $0.id == chosenCards.last!.id })!
         cards.remove(at: index)
-        cards.insert(deck.removeLast(), at: index)
+        return index
     }
     
     struct Card: Identifiable {

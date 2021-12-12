@@ -50,7 +50,14 @@ struct SetGameView: View {
                 .padding(4)
                 .zIndex(162.0 - Double(viewModel.cards.firstIndex(where: { $0.id == card.id })!))
                 .onTapGesture {
-                    withAnimation(.linear(duration: 1)) {
+                    if viewModel.state == .matched {
+                        for index in 0..<3 {
+                            withAnimation(dealAnimation(index)) {
+                                viewModel.discard()
+                            }
+                        }
+                    }
+                    withAnimation {
                         viewModel.choose(card)
                     }
                 }
@@ -71,9 +78,14 @@ struct SetGameView: View {
         .onTapGesture {
             var numberOfCardsToDeal = viewModel.deck.count == 81 ? 12 : 3
             if viewModel.state == .matched {
-                for _ in 0..<3 {
-                    withAnimation(.linear(duration: 3)) {
-                        viewModel.dealAndDiscard()
+                for index in 0..<3 {
+                    if !viewModel.deck.isEmpty {
+                        withAnimation(dealAnimation(index)) {
+                            viewModel.dealAndDiscard()
+                        }
+                        withAnimation(flipCardAnimation(index)) {
+                            viewModel.flipCard()
+                        }
                     }
                 }
                 numberOfCardsToDeal -= 3
@@ -111,9 +123,9 @@ struct SetGameView: View {
     }
 
     private struct CardConstants {
-        static let dealDelay = 0.1
-        static let dealDuration = 0.8
-        static let flipCardDuration = 0.8
+        static let dealDelay = 0.2
+        static let dealDuration = 1.6
+        static let flipCardDuration = 1.2
     }
 }
 
