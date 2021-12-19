@@ -37,12 +37,7 @@ struct EmojiArtDocumentView: View {
                             .scaleEffect(zoomScale)
                             .position(position(for: emoji, in: geometry))
                             .opacity(selected.contains(where: { $0.id == emoji.id }) ? 0.4 : 1)
-                            .onTapGesture {
-                                withAnimation {
-                                    select(emoji)
-                                }
-                            }
-                            .gesture(emojiPanGesture(emoji))
+                            .gesture(emojiPanGesture(emoji).simultaneously(with: selectGesture(emoji).exclusively(before: deleteGesture(emoji))))
                     }
                 }
             }
@@ -84,6 +79,24 @@ struct EmojiArtDocumentView: View {
                     }
                 } else {
                     document.moveEmoji(emoji, by: finalDragGestureValue.translation / zoomScale)
+                }
+            }
+    }
+    
+    private func deleteGesture(_ emoji: EmojiArtModel.Emoji) -> some Gesture {
+        LongPressGesture()
+            .onEnded {_ in
+                withAnimation {
+                    document.deleteEmoji(emoji)
+                }
+            }
+    }
+    
+    private func selectGesture(_ emoji: EmojiArtModel.Emoji) -> some Gesture {
+        TapGesture(count: 1)
+            .onEnded {
+                withAnimation {
+                    select(emoji)
                 }
             }
     }
