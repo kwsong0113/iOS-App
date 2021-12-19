@@ -27,7 +27,7 @@ struct EmojiArtDocumentView: View {
                         .scaleEffect(zoomScale)
                         .position(convertFromEmojiCoordinates((0, 0), in: geometry))
                 )
-                .gesture(doubleTapToZoom(in: geometry.size).exclusively(before: singleTapToDeselectAll()))
+                    .gesture(panGesture().simultaneously(with: doubleTapToZoom(in: geometry.size).exclusively(before: singleTapToDeselectAll())))
                 if document.backgroundImageFetchStatus == .fetching {
                     ProgressView().scaleEffect(2)
                 } else {
@@ -42,6 +42,7 @@ struct EmojiArtDocumentView: View {
                                     select(emoji)
                                 }
                             }
+                            .gesture(emojiPanGesture(emoji))
                     }
                 }
             }
@@ -49,7 +50,7 @@ struct EmojiArtDocumentView: View {
             .onDrop(of: [.plainText, .url, .image], isTargeted: nil) { providers, location in
                 return drop(providers: providers, at: location, in: geometry)
             }
-            .gesture(panGesture().simultaneously(with: zoomGesture()))
+            .gesture(zoomGesture())
         }
     }
     
@@ -64,6 +65,25 @@ struct EmojiArtDocumentView: View {
             .onEnded {
                 withAnimation {
                     selected.removeAll()
+                }
+            }
+    }
+    
+    @GestureState private var emojiPanGestureState: (EmojiArtModel.Emoji?, CGSize) = (nil, CGSize.zero)
+    
+    private func emojiPanGesture(_ emoji: EmojiArtModel.Emoji) -> some Gesture {
+        DragGesture()
+            .updating($emojiPanGestureState) { latestDragGestureValue, emojiPanGestureState, _ in
+                emojiPanGestureState.0 = emoji
+                emojiPanGestureState.1 = latestDragGestureValue.translation / zoomScale
+            }
+            .onEnded { finalDragGestureValue in
+                if selected.contains(where: { $0.id == emoji.id }) {
+                    selected.forEach {
+                        document.moveEmoji($0, by: finalDragGestureValue.translation / zoomScale)
+                    }
+                } else {
+                    document.moveEmoji(emoji, by: finalDragGestureValue.translation / zoomScale)
                 }
             }
     }
@@ -94,7 +114,12 @@ struct EmojiArtDocumentView: View {
     }
     
     private func position(for emoji: EmojiArtModel.Emoji, in geometry: GeometryProxy) -> CGPoint {
-        convertFromEmojiCoordinates((emoji.x, emoji.y), in: geometry)
+        if let draggingEmoji = emojiPanGestureState.0 {
+            if draggingEmoji.id == emoji.id || (selected.contains(where: { $0.id == draggingEmoji.id }) && selected.contains(where: {$0.id == emoji.id })) {
+                return convertFromEmojiCoordinates((emoji.x + Int(emojiPanGestureState.1.width), emoji.y + Int(emojiPanGestureState.1.height)), in: geometry)
+            }
+        }
+        return convertFromEmojiCoordinates((emoji.x, emoji.y), in: geometry)
     }
     
     private func convertToEmojiCoordinates(_ location: CGPoint, in geometry: GeometryProxy) -> (x: Int, y: Int) {
@@ -125,13 +150,14 @@ struct EmojiArtDocumentView: View {
     private var panOffset: CGSize {
         (steadyStatePanOffset + gesturePanOffset) * zoomScale
     }
+    
     private func panGesture() -> some Gesture {
         DragGesture()
             .updating($gesturePanOffset) { latestDragGestureValue, gesturePanOffset, _ in
-                gesturePanOffset = latestDragGestureValue.translation / zoomScale
+                if selected.isEmpty { gesturePanOffset = latestDragGestureValue.translation / zoomScale }
             }
             .onEnded { finalDragGestureValue in
-                steadyStatePanOffset = steadyStatePanOffset + (finalDragGestureValue.translation / zoomScale)
+                if selected.isEmpty { steadyStatePanOffset = steadyStatePanOffset + (finalDragGestureValue.translation / zoomScale) }
             }
     }
     
