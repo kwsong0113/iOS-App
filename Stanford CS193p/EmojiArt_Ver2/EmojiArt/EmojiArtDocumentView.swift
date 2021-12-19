@@ -27,7 +27,7 @@ struct EmojiArtDocumentView: View {
                         .scaleEffect(zoomScale)
                         .position(convertFromEmojiCoordinates((0, 0), in: geometry))
                 )
-                .gesture(doubleTapToZoom(in: geometry.size))
+                .gesture(singleTapToDeselectAll().exclusively(before: doubleTapToZoom(in: geometry.size)))
                 if document.backgroundImageFetchStatus == .fetching {
                     ProgressView().scaleEffect(2)
                 } else {
@@ -36,6 +36,12 @@ struct EmojiArtDocumentView: View {
                             .font(.system(size: fontSize(for: emoji)))
                             .scaleEffect(zoomScale)
                             .position(position(for: emoji, in: geometry))
+                            .opacity(selected.contains(where: { $0.id == emoji.id }) ? 0.4 : 1)
+                            .onTapGesture {
+                                withAnimation {
+                                    select(emoji)
+                                }
+                            }
                     }
                 }
             }
@@ -45,6 +51,21 @@ struct EmojiArtDocumentView: View {
             }
             .gesture(panGesture().simultaneously(with: zoomGesture()))
         }
+    }
+    
+    @State private var selected = Set<EmojiArtModel.Emoji>()
+    
+    private func select(_ emoji: EmojiArtModel.Emoji) {
+        selected.toggleMembership(of: emoji)
+    }
+    
+    private func singleTapToDeselectAll() -> some Gesture {
+        TapGesture(count: 1)
+            .onEnded {
+                withAnimation {
+                    selected.removeAll()
+                }
+            }
     }
     
     private func drop(providers: [NSItemProvider], at location: CGPoint, in geometry: GeometryProxy) -> Bool {
@@ -170,10 +191,6 @@ struct ScrollingEmojisView: View {
         }
     }
 }
-
-
-
-
 
 
 
