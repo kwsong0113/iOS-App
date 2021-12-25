@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B61DAAF3277758C100E3391E /* PaletteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61DAAF2277758C100E3391E /* PaletteManager.swift */; };
 		B6561D7127770A7A005D61A5 /* PaletteChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6561D7027770A7A005D61A5 /* PaletteChooser.swift */; };
 		B66F232F277218950015566C /* PaletteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F232E277218950015566C /* PaletteStore.swift */; };
 		B6AB224F277732AF004DE81C /* PaletteEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AB224E277732AF004DE81C /* PaletteEditor.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B61DAAF2277758C100E3391E /* PaletteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteManager.swift; sourceTree = "<group>"; };
 		B6561D7027770A7A005D61A5 /* PaletteChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteChooser.swift; sourceTree = "<group>"; };
 		B66F232E277218950015566C /* PaletteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteStore.swift; sourceTree = "<group>"; };
 		B6AB224E277732AF004DE81C /* PaletteEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteEditor.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 		B6AD97BD276633CA006FE7DE /* EmojiArt */ = {
 			isa = PBXGroup;
 			children = (
+				B61DAAF2277758C100E3391E /* PaletteManager.swift */,
 				B6AB224E277732AF004DE81C /* PaletteEditor.swift */,
 				B6561D7027770A7A005D61A5 /* PaletteChooser.swift */,
 				B66F232E277218950015566C /* PaletteStore.swift */,
@@ -162,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6AD97C1276633CA006FE7DE /* EmojiArtDocumentView.swift in Sources */,
+				B61DAAF3277758C100E3391E /* PaletteManager.swift in Sources */,
 				B66F232F277218950015566C /* PaletteStore.swift in Sources */,
 				B6AB224F277732AF004DE81C /* PaletteEditor.swift in Sources */,
 				B6AD97CF2766364B006FE7DE /* EmojiArtModel.Background.swift in Sources */,
