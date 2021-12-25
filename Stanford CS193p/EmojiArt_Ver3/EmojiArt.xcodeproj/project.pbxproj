@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6561D7127770A7A005D61A5 /* PaletteChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6561D7027770A7A005D61A5 /* PaletteChooser.swift */; };
 		B66F232F277218950015566C /* PaletteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F232E277218950015566C /* PaletteStore.swift */; };
 		B6AD97BF276633CA006FE7DE /* EmojiArtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AD97BE276633CA006FE7DE /* EmojiArtApp.swift */; };
 		B6AD97C1276633CA006FE7DE /* EmojiArtDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AD97C0276633CA006FE7DE /* EmojiArtDocumentView.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B6561D7027770A7A005D61A5 /* PaletteChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteChooser.swift; sourceTree = "<group>"; };
 		B66F232E277218950015566C /* PaletteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteStore.swift; sourceTree = "<group>"; };
 		B6AD97BB276633CA006FE7DE /* EmojiArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6AD97BE276633CA006FE7DE /* EmojiArtApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtApp.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 		B6AD97BD276633CA006FE7DE /* EmojiArt */ = {
 			isa = PBXGroup;
 			children = (
+				B6561D7027770A7A005D61A5 /* PaletteChooser.swift */,
 				B66F232E277218950015566C /* PaletteStore.swift */,
 				B6AD97D027663776006FE7DE /* EmojiArtDocument.swift */,
 				B6AD97CE2766364B006FE7DE /* EmojiArtModel.Background.swift */,
@@ -163,6 +166,7 @@
 				B6AD97BF276633CA006FE7DE /* EmojiArtApp.swift in Sources */,
 				B6AD97CD27663425006FE7DE /* EmojiArtModel.swift in Sources */,
 				B6AD97D427663A65006FE7DE /* UtilityViews.swift in Sources */,
+				B6561D7127770A7A005D61A5 /* PaletteChooser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
