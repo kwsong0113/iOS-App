@@ -16,6 +16,9 @@
 		B655BB3D2779FD910049BE29 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B655BB3C2779FD910049BE29 /* AspectVGrid.swift */; };
 		B655BB3F2779FDB80049BE29 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = B655BB3E2779FDB80049BE29 /* Cardify.swift */; };
 		B655BB412779FDF80049BE29 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B655BB402779FDF80049BE29 /* Pie.swift */; };
+		B655BB432779FEE20049BE29 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B655BB422779FEE20049BE29 /* Theme.swift */; };
+		B655BB45277A01010049BE29 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B655BB44277A01010049BE29 /* ColorExtensions.swift */; };
+		B655BB49277A04A70049BE29 /* ThemeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B655BB48277A04A70049BE29 /* ThemeStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		B655BB3C2779FD910049BE29 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		B655BB3E2779FDB80049BE29 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 		B655BB402779FDF80049BE29 /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
+		B655BB422779FEE20049BE29 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		B655BB44277A01010049BE29 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		B655BB48277A04A70049BE29 /* ThemeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,9 @@
 		B655BB252779F8FA0049BE29 /* Memorize_Final */ = {
 			isa = PBXGroup;
 			children = (
+				B655BB48277A04A70049BE29 /* ThemeStore.swift */,
+				B655BB44277A01010049BE29 /* ColorExtensions.swift */,
+				B655BB422779FEE20049BE29 /* Theme.swift */,
 				B655BB402779FDF80049BE29 /* Pie.swift */,
 				B655BB3E2779FDB80049BE29 /* Cardify.swift */,
 				B655BB3C2779FD910049BE29 /* AspectVGrid.swift */,
@@ -153,12 +162,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B655BB3F2779FDB80049BE29 /* Cardify.swift in Sources */,
+				B655BB432779FEE20049BE29 /* Theme.swift in Sources */,
 				B655BB352779FA950049BE29 /* MemoryGame.swift in Sources */,
 				B655BB272779F8FA0049BE29 /* Memorize_FinalApp.swift in Sources */,
 				B655BB3B2779FD2F0049BE29 /* EmojiMemoryGameView.swift in Sources */,
+				B655BB45277A01010049BE29 /* ColorExtensions.swift in Sources */,
 				B655BB412779FDF80049BE29 /* Pie.swift in Sources */,
 				B655BB3D2779FD910049BE29 /* AspectVGrid.swift in Sources */,
 				B655BB392779FCD40049BE29 /* EmojiMemoryGame.swift in Sources */,
+				B655BB49277A04A70049BE29 /* ThemeStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
