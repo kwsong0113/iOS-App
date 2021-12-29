@@ -16,10 +16,23 @@ class ThemeStore: ObservableObject {
         self.name = name
         if themes.isEmpty {
             print("using built-in themes")
-            insertTheme(named: "Vehicles", color: .red, emojis: "✈️🚁🛶🚞🏍🚲🚘🚍🚀🛳🚛🚠🛺🚒🚜🦽🛴🛸⛵️🛩🛰🚂🦼🏎", numberOfPairsOfCards: 14)
+            insertTheme(named: "Vehicles", color: .red, emojis: "✈️🚁🛶🚞🏍🚲🚘🚍🚀🛳🚛🚠🛺🚒🚜🦽🛴🛸⛵️🛩🛰🚂🦼🏎", numberOfPairsOfCards: 12)
             insertTheme(named: "Flags", color: .green, emojis: "🇦🇫🇦🇽🇩🇿🇦🇺🇦🇲🇧🇪🇨🇦🇧🇷🇵🇫🇫🇷🇱🇷🇯🇵🇯🇲🇯🇴🇰🇷🇪🇸🇹🇷🇬🇧🇾🇪", numberOfPairsOfCards: 10)
-            insertTheme(named: "Animals", color: .purple, emojis: "🐼🐵🐣🦉🐴🐸🐷🐯🐻🦊🐶🐱🐭🐰", numberOfPairsOfCards: 8)
+            insertTheme(named: "Animals", color: .purple, emojis: "🐼🐵🐣🦉🐴🐸🐷🐯🐻🦊🐶🐱🐭🐰", numberOfPairsOfCards: 14)
         }
+    }
+    
+    func theme(at index: Int) -> Theme {
+        let safeIndex = min(max(index, 0), themes.count - 1)
+        return themes[safeIndex]
+    }
+    
+    @discardableResult
+    func removeTheme(at index: Int) -> Int {
+        if themes.count > 1, themes.indices.contains(index) {
+            themes.remove(at: index)
+        }
+        return index % themes.count
     }
     
     func insertTheme(named name: String, color: Color, emojis: String?  = nil, numberOfPairsOfCards: Int = 0, at index: Int = 0) {

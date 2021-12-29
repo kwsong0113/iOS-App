@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B61282A9277C95B800551975 /* ThemeChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61282A8277C95B800551975 /* ThemeChooser.swift */; };
+		B61282AD277C976A00551975 /* ThemeEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61282AC277C976A00551975 /* ThemeEditor.swift */; };
+		B61282AF277C97E500551975 /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61282AE277C97E500551975 /* UtilityExtensions.swift */; };
 		B655BB272779F8FA0049BE29 /* Memorize_FinalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B655BB262779F8FA0049BE29 /* Memorize_FinalApp.swift */; };
 		B655BB2B2779F8FB0049BE29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B655BB2A2779F8FB0049BE29 /* Assets.xcassets */; };
 		B655BB2E2779F8FB0049BE29 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B655BB2D2779F8FB0049BE29 /* Preview Assets.xcassets */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B61282A8277C95B800551975 /* ThemeChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChooser.swift; sourceTree = "<group>"; };
+		B61282AC277C976A00551975 /* ThemeEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditor.swift; sourceTree = "<group>"; };
+		B61282AE277C97E500551975 /* UtilityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
 		B655BB232779F8FA0049BE29 /* Memorize_Final.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize_Final.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B655BB262779F8FA0049BE29 /* Memorize_FinalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memorize_FinalApp.swift; sourceTree = "<group>"; };
 		B655BB2A2779F8FB0049BE29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +73,9 @@
 		B655BB252779F8FA0049BE29 /* Memorize_Final */ = {
 			isa = PBXGroup;
 			children = (
+				B61282AE277C97E500551975 /* UtilityExtensions.swift */,
+				B61282AC277C976A00551975 /* ThemeEditor.swift */,
+				B61282A8277C95B800551975 /* ThemeChooser.swift */,
 				B655BB48277A04A70049BE29 /* ThemeStore.swift */,
 				B655BB44277A01010049BE29 /* ColorExtensions.swift */,
 				B655BB422779FEE20049BE29 /* Theme.swift */,
@@ -162,6 +171,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B655BB3F2779FDB80049BE29 /* Cardify.swift in Sources */,
+				B61282A9277C95B800551975 /* ThemeChooser.swift in Sources */,
+				B61282AF277C97E500551975 /* UtilityExtensions.swift in Sources */,
 				B655BB432779FEE20049BE29 /* Theme.swift in Sources */,
 				B655BB352779FA950049BE29 /* MemoryGame.swift in Sources */,
 				B655BB272779F8FA0049BE29 /* Memorize_FinalApp.swift in Sources */,
@@ -170,6 +181,7 @@
 				B655BB412779FDF80049BE29 /* Pie.swift in Sources */,
 				B655BB3D2779FD910049BE29 /* AspectVGrid.swift in Sources */,
 				B655BB392779FCD40049BE29 /* EmojiMemoryGame.swift in Sources */,
+				B61282AD277C976A00551975 /* ThemeEditor.swift in Sources */,
 				B655BB49277A04A70049BE29 /* ThemeStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
