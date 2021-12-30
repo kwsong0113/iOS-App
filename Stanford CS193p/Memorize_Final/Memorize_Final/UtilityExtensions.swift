@@ -36,4 +36,24 @@ extension RangeReplaceableCollection where Element: Identifiable {
     }
 }
 
+extension String {
+    var removingDuplicateCharacters: String {
+        reduce(into: "") { sofar, element in
+            if !sofar.contains(element) {
+                sofar.append(element)
+            }
+        }
+    }
+}
+
+extension Character {
+    var isEmoji: Bool {
+        if let firstScalar = unicodeScalars.first, firstScalar.properties.isEmoji {
+            return (firstScalar.value >= 0x238d || unicodeScalars.count > 1)
+        } else {
+            return false
+        }
+    }
+}
+
 

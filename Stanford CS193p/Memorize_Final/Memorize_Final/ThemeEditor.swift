@@ -25,13 +25,72 @@ struct ThemeEditor: View {
             .padding([.bottom], 4)
             Form {
                 nameSection
+                addEmojisSection
+                removeEmojisSection
+                cardCountSection
             }
         }
     }
     
     var nameSection: some View {
-        Section(header: Text("Theme Name").font(.subheadline)) {
+        Section(header: Text("Theme Name").font(.callout).bold()) {
             TextField("Name", text: $theme.name)
+        }
+    }
+    
+    @State private var emojisToAdd = ""
+    
+    var addEmojisSection: some View {
+        Section(header: Text("Add Emojis").font(.callout).bold()) {
+            TextField("", text: $emojisToAdd)
+                .onChange(of: emojisToAdd) { emojis in
+                    addEmojis(emojis)
+                }
+        }
+    }
+    
+    var removeEmojisSection: some View {
+        Section(header: ZStack(alignment: .leading) {
+            Text("Remove Emojis").bold()
+            HStack {
+                Spacer()
+                Text("Tap Emoji to Exclude").font(.footnote)
+            }
+        }
+        .font(.callout)
+        ) {
+        let emojis = theme.emojis.removingDuplicateCharacters.map { String($0) }
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40))]) {
+                ForEach(emojis, id: \.self) { emoji in
+                    Text(emoji)
+                        .onTapGesture {
+                            withAnimation {
+                                theme.emojis.removeAll(where: { String($0) == emoji })
+                            }
+                        }
+                }
+            }
+            .font(.system(size: 40))
+        }
+    }
+    
+    var cardCountSection: some View {
+        Section(header: Text("Card Count").font(.callout).bold()) {
+            Stepper {
+                Text("\(theme.numberOfPairsOfCards) pairs")
+            } onIncrement: {
+                theme.numberOfPairsOfCards += 1
+            } onDecrement: {
+                theme.numberOfPairsOfCards -= 1
+            }
+        }
+    }
+    
+    func addEmojis(_ emojis: String) {
+        withAnimation {
+            theme.emojis = (emojis + theme.emojis)
+                .filter({ $0.isEmoji })
+                .removingDuplicateCharacters
         }
     }
     

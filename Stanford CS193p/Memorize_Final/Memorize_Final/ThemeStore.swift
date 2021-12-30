@@ -35,10 +35,12 @@ class ThemeStore: ObservableObject {
         return index % themes.count
     }
     
-    func insertTheme(named name: String, color: Color, emojis: String?  = nil, numberOfPairsOfCards: Int = 0, at index: Int = 0) {
+    @discardableResult
+    func insertTheme(named name: String, color: Color, emojis: String?  = nil, numberOfPairsOfCards: Int = 0, at index: Int = 0) -> Theme {
         let unique = (themes.max(by: { $0.id < $1.id })?.id ?? 0) + 1
         let theme = Theme(name: name, emojis: emojis ?? "", numberOfPairsOfCards: numberOfPairsOfCards, id: unique, rgbaColor: RGBAColor(color: color))
         let safeIndex = min(max(index, 0), themes.count)
         themes.insert(theme, at: safeIndex)
+        return theme
     }
 }
