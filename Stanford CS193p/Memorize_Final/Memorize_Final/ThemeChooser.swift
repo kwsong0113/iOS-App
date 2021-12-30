@@ -30,6 +30,7 @@ struct ThemeChooser: View {
                             }
                         }
                     }
+                    .gesture(editMode == .active ? tap(theme) : nil)
                 }
                 .onDelete { indexSet in
                     store.themes.remove(atOffsets: indexSet)
@@ -38,22 +39,36 @@ struct ThemeChooser: View {
                     store.themes.move(fromOffsets: indexSet, toOffset: newOffset)
                 }
             }
+            .sheet(item: $themeToEdit) { theme in
+                ThemeEditor(theme: $store.themes[theme])
+            }
             .navigationTitle("Memorize")
             .toolbar {
                 ToolbarItem { EditButton() }
                 ToolbarItem(placement: .navigationBarLeading) { addButton }
             }
-            .environment(\.editMode, $editMode)
             .listStyle(PlainListStyle())
+            .environment(\.editMode, $editMode)
         }
     }
     
     var addButton: some View {
         Button {
-            
+            withAnimation {
+                
+            }
         } label: {
             Image(systemName: "plus")
         }
+    }
+    
+    @State private var themeToEdit: Theme?
+    
+    func tap(_ theme: Theme) -> some Gesture {
+        TapGesture()
+            .onEnded {
+                themeToEdit = theme
+            }
     }
 }
 
