@@ -13,7 +13,8 @@ struct Memorize_FinalApp: App {
     
     var body: some Scene {
         WindowGroup {
-            EmojiMemoryGameView(game: game)
+            ThemeChooser()
+                .environmentObject(ThemeStore(named: "Preview"))
         }
     }
 }

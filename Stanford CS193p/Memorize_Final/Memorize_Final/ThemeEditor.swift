@@ -42,7 +42,7 @@ struct ThemeEditor: View {
     
     var addEmojisSection: some View {
         Section(header: Text("Add Emojis").font(.callout).bold()) {
-            TextField("", text: $emojisToAdd)
+            TextField("Emoji", text: $emojisToAdd)
                 .onChange(of: emojisToAdd) { emojis in
                     addEmojis(emojis)
                 }
@@ -65,7 +65,8 @@ struct ThemeEditor: View {
                     Text(emoji)
                         .onTapGesture {
                             withAnimation {
-                                theme.emojis.removeAll(where: { String($0) == emoji })
+                                    theme.emojis.removeAll(where: { String($0) == emoji })
+                                if (theme.numberOfPairsOfCards > 2) { theme.numberOfPairsOfCards = min(theme.emojis.count, theme.numberOfPairsOfCards) }
                             }
                         }
                 }
@@ -80,8 +81,12 @@ struct ThemeEditor: View {
                 Text("\(theme.numberOfPairsOfCards) pairs")
             } onIncrement: {
                 theme.numberOfPairsOfCards += 1
+                if (theme.numberOfPairsOfCards == theme.emojis.count + 1) {
+                    theme.numberOfPairsOfCards = theme.emojis.count
+                } else { theme.numberOfPairsOfCards = 2 }
             } onDecrement: {
                 theme.numberOfPairsOfCards -= 1
+                if (theme.numberOfPairsOfCards < 2) { theme.numberOfPairsOfCards = 2 }
             }
         }
     }
@@ -100,6 +105,7 @@ struct ThemeEditor: View {
                 presentationMode.wrappedValue.dismiss()
             }
         }
+        .disabled(theme.emojis.count < 2 || theme.numberOfPairsOfCards < 2 || theme.numberOfPairsOfCards > theme.emojis.count)
     }
 }
 

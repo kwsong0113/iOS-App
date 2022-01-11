@@ -55,7 +55,7 @@ struct ThemeChooser: View {
     var addButton: some View {
         Button {
             withAnimation {
-                themeToEdit = store.insertTheme(named: "New", color: .red)
+                themeToEdit = store.insertTheme(named: "New", color: .red, numberOfPairsOfCards: 2)
             }
         } label: {
             Image(systemName: "plus")
