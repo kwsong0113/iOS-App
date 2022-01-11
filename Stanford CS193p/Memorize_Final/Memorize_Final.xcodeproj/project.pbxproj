@@ -10,6 +10,7 @@
 		B61282A9277C95B800551975 /* ThemeChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61282A8277C95B800551975 /* ThemeChooser.swift */; };
 		B61282AD277C976A00551975 /* ThemeEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61282AC277C976A00551975 /* ThemeEditor.swift */; };
 		B61282AF277C97E500551975 /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61282AE277C97E500551975 /* UtilityExtensions.swift */; };
+		B63F99FF278DCCCA00EAE3FA /* ClickColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F99FE278DCCCA00EAE3FA /* ClickColorPicker.swift */; };
 		B655BB272779F8FA0049BE29 /* Memorize_FinalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B655BB262779F8FA0049BE29 /* Memorize_FinalApp.swift */; };
 		B655BB2B2779F8FB0049BE29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B655BB2A2779F8FB0049BE29 /* Assets.xcassets */; };
 		B655BB2E2779F8FB0049BE29 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B655BB2D2779F8FB0049BE29 /* Preview Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		B61282A8277C95B800551975 /* ThemeChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChooser.swift; sourceTree = "<group>"; };
 		B61282AC277C976A00551975 /* ThemeEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditor.swift; sourceTree = "<group>"; };
 		B61282AE277C97E500551975 /* UtilityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
+		B63F99FE278DCCCA00EAE3FA /* ClickColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickColorPicker.swift; sourceTree = "<group>"; };
 		B655BB232779F8FA0049BE29 /* Memorize_Final.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize_Final.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B655BB262779F8FA0049BE29 /* Memorize_FinalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memorize_FinalApp.swift; sourceTree = "<group>"; };
 		B655BB2A2779F8FB0049BE29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				B655BB382779FCD40049BE29 /* EmojiMemoryGame.swift */,
 				B655BB342779FA950049BE29 /* MemoryGame.swift */,
 				B655BB262779F8FA0049BE29 /* Memorize_FinalApp.swift */,
+				B63F99FE278DCCCA00EAE3FA /* ClickColorPicker.swift */,
 				B655BB2A2779F8FB0049BE29 /* Assets.xcassets */,
 				B655BB2C2779F8FB0049BE29 /* Preview Content */,
 			);
@@ -182,6 +185,7 @@
 				B655BB3D2779FD910049BE29 /* AspectVGrid.swift in Sources */,
 				B655BB392779FCD40049BE29 /* EmojiMemoryGame.swift in Sources */,
 				B61282AD277C976A00551975 /* ThemeEditor.swift in Sources */,
+				B63F99FF278DCCCA00EAE3FA /* ClickColorPicker.swift in Sources */,
 				B655BB49277A04A70049BE29 /* ThemeStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

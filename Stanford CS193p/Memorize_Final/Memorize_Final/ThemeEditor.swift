@@ -28,6 +28,7 @@ struct ThemeEditor: View {
                 addEmojisSection
                 removeEmojisSection
                 cardCountSection
+                colorSection
             }
         }
     }
@@ -51,14 +52,12 @@ struct ThemeEditor: View {
     
     var removeEmojisSection: some View {
         Section(header: ZStack(alignment: .leading) {
-            Text("Remove Emojis").bold()
+            Text("Remove Emojis").font(.callout).bold()
             HStack {
                 Spacer()
                 Text("Tap Emoji to Exclude").font(.footnote)
             }
-        }
-        .font(.callout)
-        ) {
+        }) {
         let emojis = theme.emojis.removingDuplicateCharacters.map { String($0) }
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 40))]) {
                 ForEach(emojis, id: \.self) { emoji in
@@ -88,6 +87,12 @@ struct ThemeEditor: View {
                 theme.numberOfPairsOfCards -= 1
                 if (theme.numberOfPairsOfCards < 2) { theme.numberOfPairsOfCards = 2 }
             }
+        }
+    }
+    
+    var colorSection: some View {
+        Section(header: Text("Color").font(.callout).bold()) {
+            ClickColorPicker(selection: $theme.color)
         }
     }
     
