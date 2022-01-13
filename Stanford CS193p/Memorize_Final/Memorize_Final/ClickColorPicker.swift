@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ClickColorPicker: View {
     @Binding var selection: Color
-    var colors: [Color] = [.red, .blue, .black, .green, .yellow, .gray, .mint, .orange, .purple, .indigo, .cyan, .pink]
+    var colors: [Color] = [.red, .pink, .orange, .yellow, .green, .cyan, .blue, .indigo, .purple, .black]
     
     var body: some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 60))]) {
@@ -24,7 +24,7 @@ struct ClickColorPicker: View {
                             }
                         }
                         .padding(10)
-                    if selection == color {
+                    if selection == Color(rgbaColor: RGBAColor(color: color)) {
                         Circle()
                             .stroke(color, lineWidth: 5)
                             .frame(width: 60, height: 60)
