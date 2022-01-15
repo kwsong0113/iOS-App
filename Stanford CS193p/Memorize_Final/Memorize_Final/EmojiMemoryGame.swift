@@ -10,16 +10,27 @@ import SwiftUI
 class EmojiMemoryGame: ObservableObject {
     typealias Card = MemoryGame<String>.Card
     
-    static let emojis = ["✈️", "🚁", "🛶", "🚞", "🏍", "🚲", "🚘", "🚍", "🚀", "🛳", "🚛", "🚠", "🛺", "🚒", "🚜", "🦽", "🛴", "🛸", "⛵️", "🛩", "🛰", "🚂", "🦼", "🏎"]
-
-    private static func createMemoryGame() -> MemoryGame<String> {
-        MemoryGame<String>(numberOfPairsOfCards: 8) { pairIndex in emojis[pairIndex] }
+    private var theme: Theme
+    @Published private var dealt = Set<Int>()
+    
+    init(theme: Theme) {
+        self.theme = theme
+        self.model = EmojiMemoryGame.createMemoryGame(theme)
     }
-
-    @Published private var model: MemoryGame<String> = createMemoryGame()
+    
+    private static func createMemoryGame(_ theme: Theme) -> MemoryGame<String> {
+        let emojis = theme.emojis.shuffled()
+        return MemoryGame<String>(numberOfPairsOfCards: theme.numberOfPairsOfCards) { pairIndex in String(emojis[pairIndex]) }
+    }
+    
+    @Published private var model: MemoryGame<String>
 
     var cards: Array<Card> {
         return model.cards
+    }
+    
+    var color: Color {
+        return theme.color
     }
 
     //MARK: - Intent(s)
@@ -33,6 +44,15 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     func restart() {
-        model = EmojiMemoryGame.createMemoryGame()
+        model = EmojiMemoryGame.createMemoryGame(theme)
+        dealt = []
+    }
+    
+    func deal(_ card: Card) {
+        dealt.insert(card.id)
+    }
+    
+    func isUndealt(_ card: EmojiMemoryGame.Card) -> Bool {
+        !dealt.contains(card.id)
     }
 }

@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct ThemeEditor: View {
-    @Binding var theme: Theme
+    @EnvironmentObject var store: ThemeStore
+    
+    @Binding var theme: Theme {
+        didSet {
+            store.updateGame(theme: theme)
+        }
+    }
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {

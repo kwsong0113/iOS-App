@@ -11,6 +11,7 @@ class ThemeStore: ObservableObject {
     let name: String
     
     @Published var themes = [Theme]()
+    var games = Dictionary<Int, EmojiMemoryGame>()
     
     init(named name: String) {
         self.name = name
@@ -41,6 +42,11 @@ class ThemeStore: ObservableObject {
         let theme = Theme(name: name, emojis: emojis ?? "", numberOfPairsOfCards: numberOfPairsOfCards, id: unique, rgbaColor: RGBAColor(color: color))
         let safeIndex = min(max(index, 0), themes.count)
         themes.insert(theme, at: safeIndex)
+        updateGame(theme: theme)
         return theme
+    }
+    
+    func updateGame(theme: Theme) {
+        games[theme.id] = EmojiMemoryGame(theme: theme)
     }
 }

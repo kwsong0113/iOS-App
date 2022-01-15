@@ -16,7 +16,7 @@ struct ThemeChooser: View {
         NavigationView {
             List {
                 ForEach(store.themes) { theme in
-                    NavigationLink(destination: ThemeEditor(theme: $store.themes[theme])) {
+                    NavigationLink(destination: EmojiMemoryGameView(game: store.games[theme.id]!)) {
                         VStack(alignment: .leading) {
                             Text(theme.name)
                                 .font(.title)
