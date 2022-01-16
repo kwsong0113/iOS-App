@@ -13,6 +13,7 @@ struct ThemeEditor: View {
     @Binding var theme: Theme {
         didSet {
             store.updateGame(theme: theme)
+            print("didSet theme")
         }
     }
     @Environment(\.presentationMode) var presentationMode
@@ -70,8 +71,8 @@ struct ThemeEditor: View {
                     Text(emoji)
                         .onTapGesture {
                             withAnimation {
-                                    theme.emojis.removeAll(where: { String($0) == emoji })
-                                if (theme.numberOfPairsOfCards > 2) { theme.numberOfPairsOfCards = min(theme.emojis.count, theme.numberOfPairsOfCards) }
+                                if (theme.numberOfPairsOfCards > 2) { theme.numberOfPairsOfCards = min(theme.emojis.count - 1, theme.numberOfPairsOfCards) }
+                                theme.emojis.removeAll(where: { String($0) == emoji })
                             }
                         }
                 }
@@ -85,13 +86,12 @@ struct ThemeEditor: View {
             Stepper {
                 Text("\(theme.numberOfPairsOfCards) pairs")
             } onIncrement: {
-                theme.numberOfPairsOfCards += 1
-                if (theme.numberOfPairsOfCards == theme.emojis.count + 1) {
-                    theme.numberOfPairsOfCards = theme.emojis.count
-                } else { theme.numberOfPairsOfCards = 2 }
+                if (theme.numberOfPairsOfCards >= theme.emojis.count) {
+                    theme.numberOfPairsOfCards = theme.numberOfPairsOfCards
+                } else { theme.numberOfPairsOfCards += 1 }
             } onDecrement: {
-                theme.numberOfPairsOfCards -= 1
-                if (theme.numberOfPairsOfCards < 2) { theme.numberOfPairsOfCards = 2 }
+                if (theme.numberOfPairsOfCards <= 2) { theme.numberOfPairsOfCards = 2 }
+                else { theme.numberOfPairsOfCards -= 1}
             }
         }
     }

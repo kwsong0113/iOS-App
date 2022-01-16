@@ -17,7 +17,6 @@ struct EmojiMemoryGameView: View {
             VStack {
                 gameBody
                 HStack {
-                    restart
                     Spacer()
                     shuffle
                 }
@@ -26,6 +25,8 @@ struct EmojiMemoryGameView: View {
             deckBody
         }
         .padding()
+        .navigationTitle(game.theme.name)
+        .toolbar { restart }
     }
     
     private func dealAnimation(for card: EmojiMemoryGame.Card) -> Animation {
@@ -95,7 +96,7 @@ struct EmojiMemoryGameView: View {
     }
     
     var restart: some View {
-        Button("Restart") {
+        Button("New Game") {
             withAnimation {
                 game.restart()
             }
@@ -162,7 +163,8 @@ struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let game = EmojiMemoryGame(theme: ThemeStore(named: "Preview").themes[0])
+        let store = ThemeStore(named: "Preview")
+        let game = EmojiMemoryGame(theme: store.themes[0])
         game.choose(game.cards.first!)
         return EmojiMemoryGameView(game: game)
     }

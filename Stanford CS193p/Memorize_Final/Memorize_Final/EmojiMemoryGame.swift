@@ -10,7 +10,7 @@ import SwiftUI
 class EmojiMemoryGame: ObservableObject {
     typealias Card = MemoryGame<String>.Card
     
-    private var theme: Theme
+    private(set) var theme: Theme
     @Published private var dealt = Set<Int>()
     
     init(theme: Theme) {

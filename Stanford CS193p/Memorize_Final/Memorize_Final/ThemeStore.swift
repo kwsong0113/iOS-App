@@ -47,6 +47,14 @@ class ThemeStore: ObservableObject {
     }
     
     func updateGame(theme: Theme) {
-        games[theme.id] = EmojiMemoryGame(theme: theme)
+        if (theme.numberOfPairsOfCards <= theme.emojis.count) {
+            games[theme.id] = EmojiMemoryGame(theme: theme)
+        }
+    }
+    
+    func updateAllGamesExcept(theme: Theme) {
+        themes.forEach {
+            if ($0.id != theme.id) { updateGame(theme: $0) }
+        }
     }
 }
