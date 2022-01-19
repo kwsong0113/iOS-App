@@ -15,7 +15,6 @@ struct EmojiArt_Ver4App: App {
     var body: some Scene {
         WindowGroup {
             EmojiArtDocumentView(document: document)
-                // L12 "inject" our PaletteStore ViewModel into our View hierarchy
                 .environmentObject(paletteStore)
         }
     }
