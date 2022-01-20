@@ -103,6 +103,7 @@ struct UndoButton: View {
                         }
                     }
                 }
+                .id(undo.hashValue ?? 0 + redo.hashValue ?? 0)
         }
     }
 }
